@@ -10,12 +10,12 @@ const GlobalStyles = createGlobalStyle`
 
 
 function App() {
-  return (
-    <div>
-    <h1>App Works</h1>
-      <GlobalStyles />
-    </div>
-  );
+    return (
+        <div>
+            <h1>App Works</h1>
+            <GlobalStyles/>
+        </div>
+    );
 }
 
 export default App;
