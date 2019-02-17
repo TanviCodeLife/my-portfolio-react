@@ -24,6 +24,17 @@ module.exports = {
     extensions: ['.js', '.jsx']
   },
 
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
+    new HtmlWebpackPlugin({
+      template: 'template.ejs',
+      appMountId: 'react-app-root',
+      title: 'Portfolio',
+      filename: resolve(__dirname, 'build', 'index.html'),
+    }),
+  ],
+
   devtool: '#source-map',
 
   devServer: {
@@ -46,12 +57,13 @@ module.exports = {
       },
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
         exclude: /node_modules/,
-        options: {
-          plugins: [
-            'react-hot-loader/babel'
-          ]
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+            plugins: ['react-hot-loader/babel', 'styled-jsx/babel', 'babel-plugin-styled-components']
+          }
         }
       },
       {
@@ -73,16 +85,5 @@ module.exports = {
         ]
       }
     ],
-  },
-
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
-    new HtmlWebpackPlugin({
-      template: 'template.ejs',
-      appMountId: 'react-app-root',
-      title: 'Portfolio',
-      filename: resolve(__dirname, 'build', 'index.html'),
-    }),
-  ]
+  }
 };
