@@ -1,7 +1,6 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 import Splash from './Splash';
-import Header from "./Header";
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -11,13 +10,13 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 
+
 function App() {
     return (
         <div>
             <h1>App Works</h1>
-            <GlobalStyles/>
-            <Header/>
-            <Splash/>
+            <Splash>
+            </Splash>
         </div>
     );
 }

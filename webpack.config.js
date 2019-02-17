@@ -63,6 +63,14 @@ module.exports = {
                         name: 'images/[hash]-[name].[ext]'
                     }
                 }
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    'style-loader', // creates style nodes from JS strings
+                    'css-loader', // translates CSS into CommonJS
+                    'sass-loader' // compiles Sass to CSS, using Node Sass by default
+                ]
             }
         ],
     },
@@ -71,7 +79,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NamedModulesPlugin(),
         new HtmlWebpackPlugin({
-            template:'template.ejs',
+            template: 'template.ejs',
             appMountId: 'react-app-root',
             title: 'Portfolio',
             filename: resolve(__dirname, 'build', 'index.html'),
